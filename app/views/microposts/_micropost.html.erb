@@ -8,4 +8,7 @@
                                      data: { confirm: "You sure?" },
                                      title: micropost.content %>
   <% end %>
+  <% if current_user?(micropost.user) || current_user.admin? %>
+    <%= link_to "edit", edit_micropost_path(micropost)  %>
+  <% end %>
 </li>

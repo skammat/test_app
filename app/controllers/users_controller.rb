@@ -39,6 +39,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)    # Not the final implementation!
+    if !User.first
+      @user.admin = true
+    end
     if @user.save
       sign_in @user
    		flash[:succes] = "Welcome to the Test App"
